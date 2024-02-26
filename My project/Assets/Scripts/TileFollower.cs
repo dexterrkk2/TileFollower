@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TileFollower : Kinematic
 {
     public Node start;
     public Node goal;
     Graph myGraph;
-
+    public float goalRange;
     FollowPath myMoveType;
     LookWhereGoing myRotateType;
 
@@ -26,7 +26,9 @@ public class TileFollower : Kinematic
         myGraph.Build();
         start = map.tiles[0,0];
         transform.position = start.transform.position;
-        goal = map.tiles[map.mapSizeX-1,map.mapSizeY-1];
+        int randX = Random.Range(0, map.mapSizeX);
+        int randy = Random.Range(0, map.mapSizeY);
+        goal = map.tiles[randX,randy];
         List<Connection> path = Dijstra.pathfind(myGraph, start, goal);
         // path is a list of connections - convert this to gameobjects for the FollowPath steering behavior
         myPath = new GameObject[path.Count + 1];
@@ -50,6 +52,10 @@ public class TileFollower : Kinematic
         steeringUpdate = new SteeringOutput();
         steeringUpdate.angular = myRotateType.getSteering().angular;
         steeringUpdate.linear = myMoveType.getSteering().linear;
+        if ((transform.position - goal.transform.position).magnitude < goalRange)
+        {
+            SceneManager.LoadScene(0);
+        }
         base.Update();
     }
 }

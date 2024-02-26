@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
 public static class Dijstra
 {
     class NodeRecord : IComparable<NodeRecord>
@@ -194,7 +193,6 @@ public static class Dijstra
                 Node fromNode = current.connection.getFromNode();
                 current = closed.find(fromNode);
             }
-
             // Reverse the path and return it.
             path.Reverse();
             return path;

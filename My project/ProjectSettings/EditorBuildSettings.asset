@@ -11,8 +11,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ballistics.unity
     guid: 1bade04a3ac51ae43a447bb46e6f75c4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PathFollow.unity
     guid: 571fee2a879d2c74e88c3e2be9a8429e
+  - enabled: 1
+    path: Assets/Scenes/Tile Follower.unity
+    guid: 6b9da34a5dae31941b534b26292e3a11
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

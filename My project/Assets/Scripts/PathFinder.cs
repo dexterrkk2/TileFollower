@@ -46,6 +46,7 @@ public class Pathfinder : Kinematic
         steeringUpdate = new SteeringOutput();
         steeringUpdate.angular = myRotateType.getSteering().angular;
         steeringUpdate.linear = myMoveType.getSteering().linear;
+        
         base.Update();
     }
 }
