@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Node: MonoBehaviour
 {
-    public Node[] ConnectsTo;
+    public List<Node> ConnectsTo;
+    public float modifier;
     void OnDrawGizmos()
     {
         foreach(Node n in ConnectsTo)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, (n.transform.position - transform.position).normalized * 2);
+            //Gizmos.color = Color.red;
+            //Gizmos.DrawRay(transform.position, (n.transform.position - transform.position).normalized * 2);
         }
     }
 }

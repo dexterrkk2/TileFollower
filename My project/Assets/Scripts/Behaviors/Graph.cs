@@ -33,7 +33,15 @@ public class Graph
         {
             foreach (Node toNode in fromNode.ConnectsTo)
             {
-                Vector3 direction = (toNode.transform.position - fromNode.transform.position);
+                Vector3 direction;
+                if (fromNode.modifier > 0)
+                {
+                    direction = (toNode.transform.position - fromNode.transform.position) * toNode.modifier;
+                }
+                else
+                {
+                    direction = (toNode.transform.position - fromNode.transform.position);
+                }
                 float cost = direction.magnitude;
                 Debug.DrawRay(fromNode.transform.position, direction, Color.blue, Mathf.Infinity);
                 Connection c = new Connection(cost, fromNode, toNode);
